@@ -20,12 +20,15 @@ exports.createFiscalizacao = async (req, res) => {
 
 exports.getFiscalizacoes = async (req, res) => {
   try {
-    const fiscalizacoes = await Fiscalizacao.find().populate('obra');
+    const fiscalizacoes = await Fiscalizacao.find()
+      .populate('obra')
+      .select('data statusObra observacoes obra');
     res.json(fiscalizacoes);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 exports.getFiscalizacaoById = async (req, res) => {
   try {
