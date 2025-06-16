@@ -16,24 +16,24 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Criar uma nova obra
-router.post('/', upload.single('foto'), obraController.createObra);
+router.post('/obras', upload.single('foto'), obraController.createObra);
 
 // Listar todas as obras
-router.get('/', obraController.getObras);
+router.get('/obras', obraController.getObras);
 
 // Buscar obra por ID
-router.get('/:id', obraController.getObraById);
+router.get('/obras/:id', obraController.getObraById);
 
 // Atualizar obra
-router.put('/:id', upload.single('foto'), obraController.updateObra);
+router.put('/obras/:id', upload.single('foto'), obraController.updateObra);
 
 // Deletar obra
-router.delete('/:id', obraController.deleteObra);
+router.delete('/obras/:id', obraController.deleteObra);
 
 // Detalhes da obra com lista de fiscalizações
-router.get('/:id/detalhes', obraController.getObraDetalhes);
+router.get('/obras/:id/detalhes', obraController.getObraDetalhes);
 
 // Enviar dados da obra e fiscalizações por e-mail
-router.post('/:id/enviar-email', obraController.enviarObraPorEmail);
+router.post('/obras/:id/enviar-email', obraController.enviarObraPorEmail);
 
 module.exports = router;
